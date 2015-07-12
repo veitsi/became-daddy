@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru"
+<html ng-app="pledgeStore">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <title>ePledger</title>
+    <meta charset="utf-8">
+
+</head>
+<body class="container" ng-controller="PledgeController as pldg">
+<h2>Остаток на счету <em>{{pldg.balance | currency}}</em></h2>
+<div class="product row" ng-repeat="event in pldg.events">
+    <h3> {{event.title}}-{{event.date | date}}</h3>
+    <img ng-src="{{event.img}}" style="height: 60px">
+
+    <p>{{event.full}}</p>
+
+    <button class="btn btn-success" ng-hide="event.registred" ng-click="pldg.addPledge($index)">
+        Уверен/Уверена на <em class="">${{event.price}}</em> ,что смогу быть</button>
+    <button disabled class="button disabled" ng-show="event.registred">Вы уже зарегистрированы</button>
+</div>
+<div ng-hide="pldg.index===-1">Последнее добавленное событие {{pldg.events[pldg.index].title}}</div>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
