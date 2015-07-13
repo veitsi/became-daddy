@@ -8,6 +8,8 @@
             if (this.balance>=this.events[index].price) {
                 this.balance -= this.events[index].price;
                 this.events[index].registred = true;
+                alert("Вы зарегистрировались на встречу: "+this.events[index].title+". $"+
+                    this.events[index].price+" Списаны с Вашего счета. Остаток на счету: $"+this.balance)
             }
             else alert("недостаточно средств на счету");
         }
