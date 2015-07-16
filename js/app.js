@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('pledgeStore', []);
     app.controller('PledgeController', function () {
-            this.balance = 70;
+            this.balance = 80;
             this.index = 1;
             this.events = [
                 {
@@ -50,15 +50,21 @@
                     full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."
                 }
             ];
-            this.events.balance=300;
+
+            if (localStorage.getItem("balance")!==null)  {
+                console.log("let's take data ");
+                this.events= JSON.parse(localStorage.getItem("events"));
+                this.balance=JSON.parse(localStorage.getItem("balance"));
+            }
 
             this.saveData = function () {
 
                 localStorage.setItem("events", JSON.stringify (this.events));
                 localStorage.setItem("balance", JSON.stringify (this.balance));
 
-                var obj = JSON.parse(localStorage.getItem("events"));
-                console.log('balance: '+JSON.parse(localStorage.getItem("balance")));
+               // var obj = JSON.parse(localStorage.getItem("events"));
+               // console.log('balance: '+JSON.parse(localStorage.getItem("balance")));
+                //if (localStorage.getItem("balance")===null)  console.log('nothong found in balance');
             };
 
             this.recalcaccess = function () {
@@ -68,6 +74,9 @@
                     else  this.events[i].giveMoney = this.balance < this.events[i].price;
                     //console.log(i + ": " + this.events[i].giveMoney);
                 }
+            }
+            this.delData=function(){
+                localStorage.removeItem('balance');
             }
 
             this.recalcaccess();
@@ -79,7 +88,7 @@
                     this.balance -= this.events[index].price;
                     this.events[index].registred = true;
                     this.recalcaccess();
-                    this.saveData();
+                    //this.saveData();
                     alert("Вы зарегистрировались на встречу: " + this.events[index].title + ". $" +
                         this.events[index].price + " Списаны с Вашего счета. Остаток на счету: $" + this.balance)
                 }
