@@ -2,24 +2,13 @@
     var app = angular.module('pledgeStore', []);
     app.controller('PledgeController', function () {
         this.balance=70;
-        this.addPledge=function(index){
-            this.index=index;
-            console.log(this.index);
-            if (this.balance>=this.events[index].price) {
-                this.balance -= this.events[index].price;
-                this.events[index].registred = true;
-                alert("Вы зарегистрировались на встречу: "+this.events[index].title+". $"+
-                    this.events[index].price+" Списаны с Вашего счета. Остаток на счету: $"+this.balance)
-            }
-            else alert("недостаточно средств на счету");
-        }
         this.index=1;
         this.events = [
             {title: 'FOUNDERS July', price: 16.0, date: new Date(2015, 06, 14),
                 registred: false, img: "img/bluered.jpg",
                 full:" Формат мероприятия — конференция и нетворкинг, что позволяют послушать истории успеха интересных проектов, предпринимательские советы их фаундеров и обсудить бизнес возможности."},
             {title: 'Levi9 PHP Tuesday ', price: 35, date: new Date(2015, 06, 14), registred: true, img: "img/graf.jpg",
-            full: "Levi9 устраивает первый ивент в рамках Levi9 PHP Tuesday для PHP разработчиков и всех интересующихся! Наши спикеры с удовольствием расскажут вам"},
+                full: "Levi9 устраивает первый ивент в рамках Levi9 PHP Tuesday для PHP разработчиков и всех интересующихся! Наши спикеры с удовольствием расскажут вам"},
             {title: 'как начать свой стартап', price: 40, date: new Date(2015, 06, 12), registred: false, img: "img/yo.jpg",
                 full: "Лучший вариант начать трудовую неделю — бесплатно протестировать I coworking hub в один из Monday Free Coworking Days. "},
             {title: 'Excel для бізнес-потреб', price: 27, date: new Date(2015, 06, 12), registred: false, img: "img/mountains.jpg",
@@ -27,8 +16,34 @@
             {title: 'встреча Clojure-сообщества', price: 18, date: new Date(2015, 06, 12), registred: false, img: "img/horiz.jpg",
                 full: "восьмая встреча киевского Clojure-сообщества в офисе компании Cogniance"},
             {title: 'зустріч Mobile-спільноти', price: 35, date: new Date(2015, 06, 27), registred: false, img: "img/popa.jpg",
-            full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."}
+                full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."}
         ];
+
+        this.recalcaccess= function(){
+            var i;
+            for (i=0;i<this.events.length;i++){
+                if ( this.events[i].registred) this.events[i].giveMoney=false;
+                else  this.events[i].giveMoney = this.balance< this.events[i].price;
+                console.log(i+": "+this.events[i].giveMoney );
+            }
+        }
+
+        this.recalcaccess();
+
+        this.addPledge=function(index){
+            this.index=index;
+            console.log(this.index);
+            if (this.balance>=this.events[index].price) {
+                this.balance -= this.events[index].price;
+                this.events[index].registred = true;
+                this.recalcaccess();
+                alert("Вы зарегистрировались на встречу: "+this.events[index].title+". $"+
+                    this.events[index].price+" Списаны с Вашего счета. Остаток на счету: $"+this.balance)
+            }
+            else alert("недостаточно средств на счету");
+        }
+
+
     });
 })();
 
