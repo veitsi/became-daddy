@@ -1,50 +1,112 @@
 (function () {
     var app = angular.module('pledgeStore', []);
     app.controller('PledgeController', function () {
-        this.balance=70;
-        this.index=1;
-        this.events = [
-            {title: 'FOUNDERS July', price: 16.0, date: new Date(2015, 06, 14),
-                registred: false, img: "img/bluered.jpg",
-                full:" Формат мероприятия — конференция и нетворкинг, что позволяют послушать истории успеха интересных проектов, предпринимательские советы их фаундеров и обсудить бизнес возможности."},
-            {title: 'Levi9 PHP Tuesday ', price: 35, date: new Date(2015, 06, 14), registred: true, img: "img/graf.jpg",
-                full: "Levi9 устраивает первый ивент в рамках Levi9 PHP Tuesday для PHP разработчиков и всех интересующихся! Наши спикеры с удовольствием расскажут вам"},
-            {title: 'как начать свой стартап', price: 40, date: new Date(2015, 06, 12), registred: false, img: "img/yo.jpg",
-                full: "Лучший вариант начать трудовую неделю — бесплатно протестировать I coworking hub в один из Monday Free Coworking Days. "},
-            {title: 'Excel для бізнес-потреб', price: 27, date: new Date(2015, 06, 12), registred: false, img: "img/mountains.jpg",
-                full: "воркшоп буде присвячений Excel. Увага! З собою на воркшоп потрібно взяти ноутбук! "},
-            {title: 'встреча Clojure-сообщества', price: 18, date: new Date(2015, 06, 12), registred: false, img: "img/horiz.jpg",
-                full: "восьмая встреча киевского Clojure-сообщества в офисе компании Cogniance"},
-            {title: 'зустріч Mobile-спільноти', price: 35, date: new Date(2015, 06, 27), registred: false, img: "img/popa.jpg",
-                full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."}
-        ];
+            this.balance = 70;
+            this.index = 1;
+            this.events = [
+                {
+                    title: 'FOUNDERS July', price: 16.0, date: new Date(2015, 06, 14),
+                    registred: false, img: "img/bluered.jpg",
+                    full: " Формат мероприятия — конференция и нетворкинг, что позволяют послушать истории успеха интересных проектов, предпринимательские советы их фаундеров и обсудить бизнес возможности."
+                },
+                {
+                    title: 'Levi9 PHP Tuesday ',
+                    price: 35,
+                    date: new Date(2015, 06, 14),
+                    registred: true,
+                    img: "img/graf.jpg",
+                    full: "Levi9 устраивает первый ивент в рамках Levi9 PHP Tuesday для PHP разработчиков и всех интересующихся! Наши спикеры с удовольствием расскажут вам"
+                },
+                {
+                    title: 'как начать свой стартап',
+                    price: 40,
+                    date: new Date(2015, 06, 12),
+                    registred: false,
+                    img: "img/yo.jpg",
+                    full: "Лучший вариант начать трудовую неделю — бесплатно протестировать I coworking hub в один из Monday Free Coworking Days. "
+                },
+                {
+                    title: 'Excel для бізнес-потреб',
+                    price: 27,
+                    date: new Date(2015, 06, 12),
+                    registred: false,
+                    img: "img/mountains.jpg",
+                    full: "воркшоп буде присвячений Excel. Увага! З собою на воркшоп потрібно взяти ноутбук! "
+                },
+                {
+                    title: 'встреча Clojure-сообщества',
+                    price: 18,
+                    date: new Date(2015, 06, 12),
+                    registred: false,
+                    img: "img/horiz.jpg",
+                    full: "восьмая встреча киевского Clojure-сообщества в офисе компании Cogniance"
+                },
+                {
+                    title: 'зустріч Mobile-спільноти',
+                    price: 35,
+                    date: new Date(2015, 06, 27),
+                    registred: false,
+                    img: "img/popa.jpg",
+                    full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."
+                }
+            ];
+            this.saveData = function () {
+                var sobj = JSON.stringify ({"foo": "bar", "array": [1, 2, 3]});
+                console.log('JSON.stringify: '+sobj);
+                // Сериализуем его
+                //var sObj = JSON.stringify(obj)
+                // После этого sObj принимает строковое значение {"foo":"bar","array":[1,2,3]}
 
-        this.recalcaccess= function(){
-            var i;
-            for (i=0;i<this.events.length;i++){
-                if ( this.events[i].registred) this.events[i].giveMoney=false;
-                else  this.events[i].giveMoney = this.balance< this.events[i].price;
-                console.log(i+": "+this.events[i].giveMoney );
+                // Запишем в localStorage с ключём object
+                localStorage.setItem("sobj", sobj)
+                // Обратимся к localStorage следующим образом
+                // Хранилище вернёт нашу сериализованную строку {"foo":"bar","array":[1,2,3]}
+                //localStorage.object
+                // Получим наш сериализованный объект через API
+                // Одновременно преобразуем к обычному объекту JavaScript
+                var obj = JSON.parse(localStorage.getItem("sobj"));
+                console.log('obj: '+obj.array);
+                //console.log('in saveData');
+                //localStorage.setItem('somekey', 'some value', function (err, value) {
+                //    //console.log(value);
+                //});
+
+                //value2 = localStorage.getItem('somekey', function (err, value) {
+                //    console.log('taken value: ' + value);
+                //});
+                //
+                //console.log('taken value: ' + value2);
+            };
+
+            this.recalcaccess = function () {
+                var i;
+                for (i = 0; i < this.events.length; i++) {
+                    if (this.events[i].registred) this.events[i].giveMoney = false;
+                    else  this.events[i].giveMoney = this.balance < this.events[i].price;
+                    //console.log(i + ": " + this.events[i].giveMoney);
+                }
             }
-        }
 
-        this.recalcaccess();
+            this.recalcaccess();
 
-        this.addPledge=function(index){
-            this.index=index;
-            console.log(this.index);
-            if (this.balance>=this.events[index].price) {
-                this.balance -= this.events[index].price;
-                this.events[index].registred = true;
-                this.recalcaccess();
-                alert("Вы зарегистрировались на встречу: "+this.events[index].title+". $"+
-                    this.events[index].price+" Списаны с Вашего счета. Остаток на счету: $"+this.balance)
+            this.addPledge = function (index) {
+                this.index = index;
+                //console.log(this.index);
+                if (this.balance >= this.events[index].price) {
+                    this.balance -= this.events[index].price;
+                    this.events[index].registred = true;
+                    this.recalcaccess();
+                    this.saveData();
+                    alert("Вы зарегистрировались на встречу: " + this.events[index].title + ". $" +
+                        this.events[index].price + " Списаны с Вашего счета. Остаток на счету: $" + this.balance)
+                }
+                else alert("недостаточно средств на счету");
             }
-            else alert("недостаточно средств на счету");
+
+
         }
-
-
-    });
+    )
+    ;
 })();
 
 //14 июля (вторник)

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru"
+<html ng-app="Store">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <title>shop</title>
+    <meta charset="utf-8">
+
+</head>
+<body class="container" ng-controller="shopController as shop">
+<ul>
+    <li ng-repeat="(i, items) in collection">
+        <ul>
+            <li ng-repeat="(j, item) in items"> {{i}} — {{j}} Чекбокс: <input type="checkbox"
+                                                                              name="field[{{i}}][{{j}}]">
+                <button ng-click="doSomething(i, j)">Клацнуть</button>
+                <button ng-click="buyItem(item.id)">Купить</button>
+            </li>
+        </ul>
+    </li>
+</ul>
+<script type="text/javascript" src="js/localforage.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/appshop.js"></script>
+</body>
+</html>
+<!--Попробуйте так-->
+
+<!--<div ng-repeat="item in level1" ng-init="level1Index = $index">-->
+    <!--<div ng-repeat="item in level2" ng-init="level2Index = $index">-->
+        <!--{{level1Index}} - {{level2Index}}-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--все действия можно вписать в клик по кнопке Купить товар. Например, следующим образом:-->
+
+<!--HTML-->
+
+<!--<ul>-->
+    <!--<li ng-repeat="product in products">-->
+        <!--// some product code..-->
+        <!--<button ng-click="addProduct($index, product.id, product.cat.id)">-->
+            <!--Купить продукт-->
+        <!--</button>-->
+    <!--</li>-->
+<!--</ul>-->
+
+<!--JS-->
+
+<!--app.controller('productCtrl', [function(){-->
+<!--$scope.cart = []; //корзина-->
+<!--$scope.addProduct = function(index, productId, catId) {-->
+<!--$scope.cart[index] = {'product':productId, 'cat':catId};-->
+<!--};-->
+<!--}]);-->
+
+<!--Получить оба индекса в разные переменные возможно также по клику на кнопку ($scope.productId и $scope.productCatId - переменные из скопа контроллера):-->
+
+<!--// ...-->
+<!--<button ng-click="productId=product.id; productCatId=product.cat.id;">-->
+    <!--Купить продукт-->
+<!--</button>-->
+<!--// ...-->
