@@ -9,6 +9,7 @@
 </head>
 <body class="container" ng-controller="PledgeController as pldg">
 <h2>Остаток на счету <em>{{pldg.balance | currency}}</em></h2>
+<button class="btn" ng-click="pldg.saveData()">Let's make save</button>
 <div class="product row" ng-repeat="event in pldg.events">
     <h3> {{event.title}}-{{event.date | date}}</h3>
     <img ng-src="{{event.img}}" style="height: 60px">

@@ -50,22 +50,26 @@
                     full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."
                 }
             ];
+            this.events.balance=300;
+
             this.saveData = function () {
-                var sobj = JSON.stringify ({"foo": "bar", "array": [1, 2, 3]});
-                console.log('JSON.stringify: '+sobj);
+                //var sobj = JSON.stringify ({"foo": "bar", "array": [1, 2, 3]});
+                //console.log('JSON.stringify: '+sobj);
                 // Сериализуем его
                 //var sObj = JSON.stringify(obj)
                 // После этого sObj принимает строковое значение {"foo":"bar","array":[1,2,3]}
 
                 // Запишем в localStorage с ключём object
-                localStorage.setItem("sobj", sobj)
+                //console.log('JSON.stringify: '+JSON.stringify(this.events));
+                localStorage.setItem("events", JSON.stringify (this.events));
+                localStorage.setItem("balance", JSON.stringify (this.balance));
                 // Обратимся к localStorage следующим образом
                 // Хранилище вернёт нашу сериализованную строку {"foo":"bar","array":[1,2,3]}
                 //localStorage.object
                 // Получим наш сериализованный объект через API
                 // Одновременно преобразуем к обычному объекту JavaScript
-                var obj = JSON.parse(localStorage.getItem("sobj"));
-                console.log('obj: '+obj.array);
+                var obj = JSON.parse(localStorage.getItem("events"));
+                console.log('balance: '+JSON.parse(localStorage.getItem("balance")));
                 //console.log('in saveData');
                 //localStorage.setItem('somekey', 'some value', function (err, value) {
                 //    //console.log(value);
