@@ -2,6 +2,7 @@
     var app = angular.module('pledgeStore', []);
     app.controller('PledgeController', function () {
             this.balance = 80;
+            this.user='John Doe';
             this.index = 1;
             this.events = [
                 {
@@ -51,20 +52,16 @@
                 }
             ];
 
-            if (localStorage.getItem("balance")!==null)  {
+            if (localStorage.getItem(this.user+"balance")!==null)  {
                 console.log("let's take data ");
-                this.events= JSON.parse(localStorage.getItem("events"));
-                this.balance=JSON.parse(localStorage.getItem("balance"));
+                this.events= JSON.parse(localStorage.getItem(this.user+"events"));
+                this.balance=JSON.parse(localStorage.getItem(this.user+"balance"));
             }
 
             this.saveData = function () {
 
-                localStorage.setItem("events", JSON.stringify (this.events));
-                localStorage.setItem("balance", JSON.stringify (this.balance));
-
-               // var obj = JSON.parse(localStorage.getItem("events"));
-               // console.log('balance: '+JSON.parse(localStorage.getItem("balance")));
-                //if (localStorage.getItem("balance")===null)  console.log('nothong found in balance');
+                localStorage.setItem(this.user+"events", JSON.stringify (this.events));
+                localStorage.setItem(this.user+"balance", JSON.stringify (this.balance));
             };
 
             this.recalcaccess = function () {
@@ -76,7 +73,7 @@
                 }
             }
             this.delData=function(){
-                localStorage.removeItem('balance');
+                localStorage.removeItem(this.user+"balance");
             }
 
             this.recalcaccess();

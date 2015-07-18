@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru"
+<html lang="ru">
 <html ng-app="pledgeStore">
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>ePledger</title>
     <meta charset="utf-8">
 
 </head>
 <body class="container" ng-controller="PledgeController as pldg">
-<h2>Остаток на счету <em>{{pldg.balance | currency}}</em></h2>
-<button class="btn btn-warning" ng-click="pldg.saveData()">Let's make save</button>
+<h2>Остаток на счету <em>{{pldg.balance | currency}} for {{pldg.user}}</em></h2>
+<input type="text" ng-model="pldg.user" disabled>
+<button class="btn btn-warning" ng-click="pldg.saveData()">Let's save</button>
 <button class="btn btn-danger" ng-click="pldg.delData()">Delete my data</button>
-<div class="product row" ng-repeat="event in pldg.events">
+<div class="product row" ng-repeat="event in pldg.events" style="border-bottom: solid 1px">
     <h3> {{event.title}}-{{event.date | date}}</h3>
-    <img ng-src="{{event.img}}" style="height: 60px">
+    <div class="frame">
+        <img ng-src="{{event.img}}" style="height: 60px">
+    </div>
 
     <p>{{event.full}}</p>
 
@@ -21,7 +25,7 @@
         Уверен/Уверена на <em class="">${{event.price}}</em> ,что смогу быть</button>
     <button disabled class="button disabled" ng-show="event.registred">Вы уже зарегистрированы</button>
 </div>
-<div ng-hide="pldg.index===-1">Последнее добавленное событие {{pldg.events[pldg.index].title}}</div>
+<div ng-hide="pldg.index===1">Последнее добавленное событие {{pldg.events[pldg.index].title}}</div>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>
