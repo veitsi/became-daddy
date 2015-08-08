@@ -9,8 +9,9 @@
 
 </head>
 <body class="container" ng-controller="PledgeController as pldg">
-<h2>Остаток на счету <em>{{pldg.balance | currency}} for {{pldg.user}}</em></h2>
+<h2>Остаток на счету <em>{{pldg.balance | currency}} у пользователя {{pldg.user}}</em></h2>
 <input type="text" ng-model="pldg.user" disabled>
+<img src="img/rafael140.jpg" class="img-rounded">
 <button class="btn btn-warning" ng-click="pldg.saveData()">Let's save</button>
 <button class="btn btn-danger" ng-click="pldg.delData()">Delete my data</button>
 <div class="product row" ng-repeat="event in pldg.events" style="border-bottom: solid 1px">
@@ -26,6 +27,7 @@
     <button disabled class="button disabled" ng-show="event.registred">Вы уже зарегистрированы</button>
 </div>
 <div ng-hide="pldg.index===1">Последнее добавленное событие {{pldg.events[pldg.index].title}}</div>
+<div> (c)ep 2015 </div>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>

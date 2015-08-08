@@ -2,40 +2,40 @@
     var app = angular.module('pledgeStore', []);
     app.controller('PledgeController', function () {
             this.balance = 80;
-            this.user='John Doe';
+            this.user='Рэфаель Юха';
             this.index = 1;
             this.events = [
                 {
-                    title: 'FOUNDERS July', price: 16.0, date: new Date(2015, 06, 14),
+                    title: 'Team Makers #1 by Hackraft ', price: 43.74, date: new Date(2015, 07, 08),
                     registred: false, img: "img/bluered.jpg",
-                    full: " Формат мероприятия — конференция и нетворкинг, что позволяют послушать истории успеха интересных проектов, предпринимательские советы их фаундеров и обсудить бизнес возможности."
+                    full: "Виникла крута ідея проекту, але для реалізації не вистачає рук? Є вільний час, у який хотілося б покодити, але не знайшов цікавого проекту?"
                 },
                 {
-                    title: 'Levi9 PHP Tuesday ',
+                    title: 'Мастер-класс по балийским танцам от Джона Резига',
                     price: 35,
-                    date: new Date(2015, 06, 14),
+                    date: new Date(2015, 07, 09),
                     registred: true,
                     img: "img/graf.jpg",
-                    full: "Levi9 устраивает первый ивент в рамках Levi9 PHP Tuesday для PHP разработчиков и всех интересующихся! Наши спикеры с удовольствием расскажут вам"
+                    full: "Крутые программеры умеют не только класно кодить, но и классно танцевать. Не веришь? приходи на майдан незалежности и научить танцевать болийские танцы от крутого JavaScript-ниндзя Джона Резига. Всем кто прийдет с книжкой Джона - Секреты JavaScript ниндзя получит персональнный автограф"
                 },
                 {
-                    title: 'как начать свой стартап',
+                    title: 'Ruby! Что за зверь и к чему вся эта семантика?',
                     price: 40,
-                    date: new Date(2015, 06, 12),
+                    date: new Date(2015, 07, 12),
                     registred: false,
                     img: "img/yo.jpg",
-                    full: "Лучший вариант начать трудовую неделю — бесплатно протестировать I coworking hub в один из Monday Free Coworking Days. "
+                    full: "QA и хочешь разобраться в языках программирования? Ты начинающий программист и еще не определился с выбором языка для кодинга?"
                 },
                 {
-                    title: 'Excel для бізнес-потреб',
+                    title: 'QBasic для бізнес-потреб',
                     price: 27,
-                    date: new Date(2015, 06, 12),
+                    date: new Date(2015, 07, 12),
                     registred: false,
                     img: "img/mountains.jpg",
                     full: "воркшоп буде присвячений Excel. Увага! З собою на воркшоп потрібно взяти ноутбук! "
                 },
                 {
-                    title: 'встреча Clojure-сообщества',
+                    title: 'встреча Haskell-сообщества',
                     price: 18,
                     date: new Date(2015, 06, 12),
                     registred: false,
@@ -43,7 +43,7 @@
                     full: "восьмая встреча киевского Clojure-сообщества в офисе компании Cogniance"
                 },
                 {
-                    title: 'зустріч Mobile-спільноти',
+                    title: 'android meetup',
                     price: 35,
                     date: new Date(2015, 06, 27),
                     registred: false,
