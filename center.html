@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div><h1>header</h1>
+    <button id="btn" value="Lena's button"
+            style="background-color: blue; border-radius: 9px;">button</button>
+</div>
+
+</body>
+<script>
+    var CENTAPP=(function(){
+        //alert('quick');
+    }());
+
+    function getCounter(){
+        var counter=0;
+        return function(){
+            return ++counter;
+        }
+    };
+    var c=getCounter();
+//    alert(c());
+//    alert(c());
+//    alert(c());
+
+    //alert("gfgg".toUpperCase());
+    a={a:1, b:true, c:[1,2,3]};
+    //alert(a);
+    //console.dir(a);
+    for (p in a){
+        console.log(a[p]);
+    }
+
+
+</script>
+</html>
