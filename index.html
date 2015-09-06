@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>стань папой</title>
+    <title>Стань папой!</title>
     <meta charset="utf-8">
 
 </head>
@@ -22,7 +22,7 @@
     </div>
 
     <p>{{event.full}}</p>
-
+    <div>Уже подали заявки: <span ng-repeat="applicant in event.applicants">{{applicant}} </span></div>
     <button class="btn btn-success" ng-hide="event.registred" ng-click="pldg.addPledge($index)">
         Хочу стать папой</button>
     <button disabled class="button disabled" ng-show="event.registred">Вы уже подали заявку</button>
