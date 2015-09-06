@@ -4,30 +4,35 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>ePledger</title>
+    <title>стань папой</title>
     <meta charset="utf-8">
 
 </head>
 <body class="container" ng-controller="PledgeController as pldg">
-<h2>Остаток на счету <em>{{pldg.balance | currency}} у пользователя {{pldg.user}}</em></h2>
-<input type="text" ng-model="pldg.user" disabled>
-<img src="img/rafael140.jpg" class="img-rounded">
-<button class="btn btn-warning" ng-click="pldg.saveData()">Let's save</button>
-<button class="btn btn-danger" ng-click="pldg.delData()">Delete my data</button>
+<p><img ng-src="{{pldg.photo}}" width="120" height="120" class="img-rounded" style="float: left">
+<h2>пользователь <input type="text" ng-model="pldg.user"> <br/>
+    Ваш регион: Киев. Вы можете подать еще {{pldg.balance}} заявки на папство</h2>
+<div style="clear: both"></div>
+</p>
+
 <div class="product row" ng-repeat="event in pldg.events" style="border-bottom: solid 1px">
-    <h3> {{event.title}}-{{event.date | date}}</h3>
+    <h3> {{event.title}}</h3>
     <div class="frame">
-        <img ng-src="{{event.img}}" style="height: 60px">
+        <img ng-src="{{event.img}}" style="height: 120px">
     </div>
 
     <p>{{event.full}}</p>
 
     <button class="btn btn-success" ng-hide="event.registred" ng-click="pldg.addPledge($index)">
-        Уверен/Уверена на <em class="">${{event.price}}</em> ,что смогу быть</button>
-    <button disabled class="button disabled" ng-show="event.registred">Вы уже зарегистрированы</button>
+        Хочу стать папой</button>
+    <button disabled class="button disabled" ng-show="event.registred">Вы уже подали заявку</button>
 </div>
-<div ng-hide="pldg.index===1">Последнее добавленное событие {{pldg.events[pldg.index].title}}</div>
+
 <div> (c)epld 2015 </div>
+<footer>
+    <button class="btn btn-warning" ng-click="pldg.saveData()">Let's save</button>
+    <button class="btn btn-danger" ng-click="pldg.delData()">Delete my data</button>
+</footer>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>

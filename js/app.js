@@ -1,54 +1,56 @@
 (function () {
     var app = angular.module('pledgeStore', []);
     app.controller('PledgeController', function () {
-            this.balance = 80;
-            this.user='Рэфаель Юха';
+            this.balance = 2;
+            this.user='Александр К.';
+            this.photo='img/'+this.user+'.jpg';
             this.index = 1;
             this.events = [
                 {
-                    title: 'Team Makers #1 by Hackraft ', price: 43.74, date: new Date(2015, 07, 08),
-                    registred: false, img: "img/bluered.jpg",
-                    full: "Виникла крута ідея проекту, але для реалізації не вистачає рук? Є вільний час, у який хотілося б покодити, але не знайшов цікавого проекту?"
+                    title: 'Подземный переход на зоологической',
+                    price: 1, date: new Date(2015, 07, 08),
+                    registred: false, img: "img/per01.jpg",
+                    full: "В переходе горит лишь одна лампочка. ступеньки находятся в аварийном состоянии"
                 },
                 {
-                    title: 'Мастер-класс по балийским танцам от Джона Резига',
-                    price: 35,
+                    title: 'Подземный переход на м.Дружбы народов',
+                    price: 1,
                     date: new Date(2015, 07, 09),
-                    registred: true,
-                    img: "img/graf.jpg",
-                    full: "Крутые программеры умеют не только класно кодить, но и классно танцевать. Не веришь? приходи на майдан незалежности и научить танцевать болийские танцы от крутого JavaScript-ниндзя Джона Резига. Всем кто прийдет с книжкой Джона - Секреты JavaScript ниндзя получит персональнный автограф"
+                    registred: false,
+                    img: "img/per02.jpg",
+                    full: "В переходе сломаны перила. Нет рельс для того, чтобы провезти коляску"
                 },
                 {
-                    title: 'Ruby! Что за зверь и к чему вся эта семантика?',
-                    price: 40,
+                    title: 'Подземный переход на Киквидзе',
+                    price: 1,
                     date: new Date(2015, 07, 12),
                     registred: false,
-                    img: "img/yo.jpg",
-                    full: "QA и хочешь разобраться в языках программирования? Ты начинающий программист и еще не определился с выбором языка для кодинга?"
+                    img: "img/per03.jpg",
+                    full: "Лужи почти по всему проходу. не горят лампы"
                 },
                 {
-                    title: 'QBasic для бізнес-потреб',
-                    price: 27,
+                    title: 'Подземный переход на академика Билецкого',
+                    price: 1,
                     date: new Date(2015, 07, 12),
                     registred: false,
-                    img: "img/mountains.jpg",
-                    full: "воркшоп буде присвячений Excel. Увага! З собою на воркшоп потрібно взяти ноутбук! "
+                    img: "img/per04.jpg",
+                    full: "В переходе постоянно валяются шприцы и разбитые бутылки"
                 },
                 {
-                    title: 'встреча Haskell-сообщества',
-                    price: 18,
-                    date: new Date(2015, 06, 12),
+                    title: 'Подземный переход на И.Клименка',
+                    price: 1,
+                    date: new Date(2015, 07, 12),
                     registred: false,
-                    img: "img/horiz.jpg",
-                    full: "восьмая встреча киевского Clojure-сообщества в офисе компании Cogniance"
+                    img: "img/per05.jpg",
+                    full: "В переходе горит лишь одна лампа. Постоянно бегают крысы"
                 },
                 {
-                    title: 'android meetup',
-                    price: 35,
-                    date: new Date(2015, 06, 27),
+                    title: 'Подземный переход на Еревансокй',
+                    price: 1,
+                    date: new Date(2015, 07, 12),
                     registred: false,
-                    img: "img/popa.jpg",
-                    full: "17-та зустріч однодумців Mobile-спільноти. Як досвідчені розробники та юзери, так і новачки мають змогу обговорити тематичні питання, знайти партнерів та просто весело і неформально провести час."
+                    img: "img/per01.jpg",
+                    full: "В переходе горит лишь одна лампа. Постоянно бегают крысы"
                 }
             ];
 
@@ -86,10 +88,10 @@
                     this.events[index].registred = true;
                     this.recalcaccess();
                     //this.saveData();
-                    alert("Вы зарегистрировались на встречу: " + this.events[index].title + ". $" +
-                        this.events[index].price + " Списаны с Вашего счета. Остаток на счету: $" + this.balance)
+                    alert("Вы хотите стать папой для объекта: " + this.events[index].title
+                        + " Вы можете подать еще: " + this.balance+" заявок")
                 }
-                else alert("недостаточно средств на счету");
+                else alert("Вы исчерпали лимит заявок");
             }
 
 
